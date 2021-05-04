@@ -1,0 +1,30 @@
+/* Potential solution for the challenge, as specified in README.md: */
+
+%macro Fish();
+proc sql noprint;
+select distinct species into :key1- from sashelp.fish;
+quit;
+
+data work.fishyset;
+set sashelp.fish(drop = weight length:);
+array names %do i = 1 %to 7;
+		  	%sysfunc(cats(&&key&i,_H))
+			%sysfunc(cats(&&key&i,_W))
+			%end;
+			;
+do over names;
+	if species ^= scan(vname(names),1,"_") then names = .;
+	else if scan(vname(names),2,"_") = "H" then names = height;
+	else names = width;
+end;
+run;
+
+proc sort data=work.fishyset;
+	by species;
+run;
+
+proc print data=work.fishyset(drop = species height width);
+run;
+
+%mend;
+%Fish()

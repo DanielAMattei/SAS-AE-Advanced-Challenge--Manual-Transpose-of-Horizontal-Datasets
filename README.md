@@ -4,8 +4,6 @@ NOTE: The instructions below pertain to a challenge intended for advanced SAS pr
       as part of the SAS Analytics Explorer's Program. It is provided in this repository as a
       fruitful exercise for my colleagues, friends, and fellow enthusiasts.
 
-      A potential solution is provided in manualtranspose.txt.
-
 INSTRUCTIONS:
 Arrays are normally used to transpose wide/horizontal data into a narrow/vertical structure.
 How might they be used to do the reverse, from narrow to wide?

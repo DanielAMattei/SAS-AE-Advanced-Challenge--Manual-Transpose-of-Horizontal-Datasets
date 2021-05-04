@@ -10,12 +10,12 @@ set sashelp.fish(drop = weight length:);
 array names %do i = 1 %to 7;
 	%sysfunc(cats(&&key&i,_H))
 	%sysfunc(cats(&&key&i,_W))
-        %end;
-	;
+%end;
+;
 do over names;
 	if species ^= scan(vname(names),1,"_") then names = .;
-	else if scan(vname(names),2,"_") = "H" then names = height;
-	else names = width;
+		else if scan(vname(names),2,"_") = "H" then names = height;
+		else names = width;
 	end;
 run;
 
